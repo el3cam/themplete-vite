@@ -1,5 +1,5 @@
 # React + Vite + Tailwind + React Query  
-Contiene estructura basica para uso de React, mas Tailwind y react query para uso solicitudes de servidor
+Contiene estructura basica para uso de React, mas Tailwind y su plugin de prettier para class sorter, react query para uso solicitudes de servidor
 
 ## Comandos 
 ```bash
