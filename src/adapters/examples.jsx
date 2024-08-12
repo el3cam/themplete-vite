@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchData } from "./fetchData";
 
 export const useQueryExample = () => {
@@ -27,13 +27,13 @@ export const useExampleQueryService = ({
 }) => {
 	const disabled = Object.values(params).some((param) => !param);
 	const query = useQuery(
-		[service, params],
-		() =>
-			fetchDatafetchData({
-				service: "services",
-				data: { service, ...params },
-			}),
 		{
+			queryKey: [service, params],
+			queryFn: () =>
+				fetchData({
+					service: "services",
+					data: { service, ...params },
+				}),
 			refetchOnWindowFocus: false,
 			enabled: !disabled,
 			staleTime: 30 * 60 * 1000, // 30 minutos en milisegundos
