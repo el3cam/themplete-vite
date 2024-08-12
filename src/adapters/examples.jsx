@@ -12,7 +12,10 @@ export const useQueryExample = () => {
 export const useMutateExample = () => {
 	return useMutation({
 		mutationFn: (params) =>
-			fetchData({ service: "service_name", ...params }, "services"),
+			fetchData({
+				service: "services",
+				data: { service: "service_name", ...params },
+			}),
 		onSuccess: () => {},
 	});
 };
@@ -25,7 +28,11 @@ export const useExampleQueryService = ({
 	const disabled = Object.values(params).some((param) => !param);
 	const query = useQuery(
 		[service, params],
-		() => fetchData({ service, ...params }, "services"),
+		() =>
+			fetchDatafetchData({
+				service: "services",
+				data: { service, ...params },
+			}),
 		{
 			refetchOnWindowFocus: false,
 			enabled: !disabled,
